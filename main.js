@@ -35,4 +35,6 @@ function main() {
     go(INPUT.value);
 };
 
-
+window.onload = function() {
+  PARSE.onclick = main;
+}
