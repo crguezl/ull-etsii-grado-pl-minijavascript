@@ -15,7 +15,6 @@ Object.prototype.error = function (message, t) {
     throw t;
 };
 
-
 function main() {
     var parse = make_parse();
 
