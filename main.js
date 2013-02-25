@@ -16,7 +16,7 @@ Object.prototype.error = function (message, t) {
 };
 
 
-(function () {
+function main() {
     var parse = make_parse();
 
     function go(source) {
@@ -32,9 +32,7 @@ Object.prototype.error = function (message, t) {
         OUTPUT.innerHTML = string.replace(/&/g, '&amp;').replace(/[<]/g, '&lt;');
     }
 
-    PARSE.onclick = function (e) {
-        go(INPUT.value);
-    };
-}());
+    go(INPUT.value);
+};
 
 

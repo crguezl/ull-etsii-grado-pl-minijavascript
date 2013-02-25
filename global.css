@@ -6,4 +6,20 @@ html *
         padding-right: 10px; vertical-align: top;}
     table {width: 90%; border: 0px; cellpadding: 0px;}
 }
-
+#INPUT 
+{
+    border: none; 
+    color: black;
+    font-family: monospace;
+    height: 1in;
+    overflow: auto;
+    /* padding: 0.5em; */
+    width: 80%;
+    background-color: #66FFCC; 
+}
+body { background-color: #99FFFF; }
+#OUTPUT 
+{
+    background-color: #66FFCC; 
+    width: 80%;
+}
