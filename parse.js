@@ -519,6 +519,7 @@ var make_parse = function () {
 
     return function (source) {
         tokens = source.tokens('=<>!+-*&|/%^', '=<>&|');
+        
         token_nr = 0;
         new_scope();
         advance();
@@ -526,5 +527,6 @@ var make_parse = function () {
         advance("(end)");
         scope.pop();
         return s;
+       
     };
 };

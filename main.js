@@ -22,8 +22,9 @@ function main() {
         var string, tree;
         try {
             tree = parse(source);
+            //string = JSON.stringify(tree, ['type', 'value', 'from', 'to'],  4);
             string = JSON.stringify(tree, ['key', 'name', 'message',
-                'value', 'arity', 'first', 'second', 'third', 'fourth'], 4);
+                 'value', 'arity', 'first', 'second', 'third', 'fourth'], 4);
         } catch (e) {
             string = JSON.stringify(e, ['name', 'message', 'from', 'to', 'key',
                     'value', 'arity', 'first', 'second', 'third', 'fourth'], 4);
