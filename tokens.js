@@ -11,7 +11,7 @@
 
 // Comments are ignored.
 
-String.prototype.tokens = function (prefix, suffix) {
+String.prototype.tokens = function () {
     var from;                   // The index of the start of the token.
     var i = 0;                  // The index of the current character.
     var n;                      // The number value.
@@ -19,6 +19,15 @@ String.prototype.tokens = function (prefix, suffix) {
     var m;                      // Matching
     var rest = this.substr(i);  // The substring suffix to be processed
     var result = [];            // An array to hold the results.
+
+    var WHITES              = /^\s+/;
+    var ID                  = /^[a-zA-Z_]\w*/;
+    var NUM                 = /^\d+(\.\d*)?([eE][+-]?\d+)?\b/;
+    var STRING              = /^('(\\.|[^'])*'|"(\\.|[^"])*")/;
+    var ONELINECOMMENT      = /^\/\/.*/;
+    var MULTIPLELINECOMMENT = /^\/[*](.|\n)*?[*]\//;
+    var TWOCHAROPERATORS    = /^([+][+=]|-[-=]|=[=<>]|[<>][=<>]|&&|[|][|])/;
+    var ONECHAROPERATORS    = /^([-+*\/=()&|;:<>[\]])/;
 
     // Make a token object.
     var make = function (type, value) {
@@ -37,19 +46,17 @@ String.prototype.tokens = function (prefix, suffix) {
     while (rest = this.substr(i)) {
         from = i;
         // Ignore whitespace.
-        if (m = rest.match(/^\s+/)) {
+        if (m = rest.match(WHITES)) {
             str = m[0];
             i += str.length;
         // name.
-        } else if (m = rest.match(/^[a-zA-Z_]\w*/)) {
+        } else if (m = rest.match(ID)) {
             str = m[0];
             i += str.length;
             result.push(make('name', str));
 
         // number.
-        // A number cannot start with a decimal point. It must start with a digit,
-        // possibly '0'.
-        } else if (m = rest.match(/^\d+(\.\d*)?([eE][+-]?\d+)?\b/)) {
+        } else if (m = rest.match(NUM)) {
             str = m[0];
             i += str.length;
 
@@ -60,25 +67,24 @@ String.prototype.tokens = function (prefix, suffix) {
                 make('number', str).error("Bad number");
             }
         // string
-        } else if (m = rest.match(/^('(\\.|[^'])*'|"(\\.|[^"])*")/)) {
+        } else if (m = rest.match(STRING)) {
             str = m[0];
             i += str.length;
             str = str.replace(/^["']/,'');
             str = str.replace(/["']$/,'');
             result.push(make('string', str));
         // comment.
-        } else if ((m = rest.match(/^\/\/.*/))  || 
-                   (m = rest.match(/^\/[*](.|\n)*?[*]\//))) {
+        } else if ((m = rest.match(ONELINECOMMENT))  || 
+                   (m = rest.match(MULTIPLELINECOMMENT))) {
             str = m[0];
             i += str.length;
-        // source.tokens('=<>!+-*&|/%^', '=<>&|');
-        // combining
-        } else if (m = this.substr(i,2).match(/^([+][+=]|-[-=]|=[=<>]|[<>][=<>]|&&|[|][|])/)) {
+        // two char operator
+        } else if (m = this.substr(i,2).match(TWOCHAROPERATORS)) {
             str = m[0];
             i += str.length;
             result.push(make('operator', str));
         // single-character operator
-        } else if (m = this.substr(i,1).match(/^([-+*\/=()&|;:<>[\]])/)){
+        } else if (m = this.substr(i,1).match(ONECHAROPERATORS)){
             result.push(make('operator', this.substr(i,1)));
             i += 1;
         } else {

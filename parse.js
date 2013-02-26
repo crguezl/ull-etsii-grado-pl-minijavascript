@@ -518,7 +518,7 @@ var make_parse = function () {
     });
 
     return function (source) {
-        tokens = source.tokens('=<>!+-*&|/%^', '=<>&|');
+        tokens = source.tokens();
         
         token_nr = 0;
         new_scope();
