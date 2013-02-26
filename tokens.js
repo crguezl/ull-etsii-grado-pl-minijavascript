@@ -1,3 +1,4 @@
+"use strict";
 // tokens.js
 // 2010-02-23
 
@@ -14,11 +15,9 @@ String.prototype.tokens = function (prefix, suffix) {
     var from;                   // The index of the start of the token.
     var i = 0;                  // The index of the current character.
     var n;                      // The number value.
-    var q;                      // The quote character.
     var str;                    // The string value.
     var m;                      // Matching
     var rest = this.substr(i);  // The substring suffix to be processed
-
     var result = [];            // An array to hold the results.
 
     // Make a token object.
