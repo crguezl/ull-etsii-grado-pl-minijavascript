@@ -168,7 +168,7 @@ var make_parse = function () {
         }
     };
 
-    var symbol = function (id, bp) {
+    var symbol = function (id, bp) { // bp = binding power
         var s = symbol_table[id];
         bp = bp || 0;
         if (s) {

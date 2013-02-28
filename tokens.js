@@ -33,7 +33,7 @@ String.prototype.tokens = function () {
     var ONELINECOMMENT      = /\/\/.*/g;
     var MULTIPLELINECOMMENT = /\/[*](.|\n)*?[*]\//g;
     var TWOCHAROPERATORS    = /([+][+=]|-[-=]|=[=<>]|[<>][=<>]|&&|[|][|])/g;
-    var ONECHAROPERATORS    = /([-+*\/=()&|;:<>{}[\]])/g;
+    var ONECHAROPERATORS    = /([-+*\/=()&|;:,<>{}[\]])/g; // May be some character is missing?
 
     // Make a token object.
     var make = function (type, value) {
