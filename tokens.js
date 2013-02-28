@@ -28,12 +28,12 @@ String.prototype.tokens = function () {
 
     var WHITES              = /\s+/g;
     var ID                  = /[a-zA-Z_]\w*/g;
-    var NUM                 = /\d+(\.\d*)?([eE][+-]?\d+)?\b/g;
+    var NUM                 = /\b\d+(\.\d*)?([eE][+-]?\d+)?\b/g;
     var STRING              = /('(\\.|[^'])*'|"(\\.|[^"])*")/g;
     var ONELINECOMMENT      = /\/\/.*/g;
     var MULTIPLELINECOMMENT = /\/[*](.|\n)*?[*]\//g;
     var TWOCHAROPERATORS    = /([+][+=]|-[-=]|=[=<>]|[<>][=<>]|&&|[|][|])/g;
-    var ONECHAROPERATORS    = /([-+*\/=()&|;:<>[\]])/g;
+    var ONECHAROPERATORS    = /([-+*\/=()&|;:<>{}[\]])/g;
 
     // Make a token object.
     var make = function (type, value) {
@@ -97,7 +97,7 @@ String.prototype.tokens = function () {
             result.push(make('operator', this.substr(i,1)));
             i += 1;
         } else {
-          throw "syntax error near '"+this.substr(i)+"'";
+          throw "Syntax error near '"+this.substr(i)+"'";
         }
     }
     return result;

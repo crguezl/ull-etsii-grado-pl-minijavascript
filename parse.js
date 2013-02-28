@@ -6,7 +6,7 @@
 // 2010-06-26
 
 var make_parse = function () {
-    var scope;
+    var scope;              // current scope
     var symbol_table = {};
     var token;
     var tokens;
@@ -24,10 +24,12 @@ var make_parse = function () {
             }
             this.def[n.value] = n;
             n.reserved = false;
-            n.nud      = itself;
+            n.nud      = itself; //A nud method is used by values and by prefix operators. 
+                                 //A nud does not care about the tokens to the left.
             n.led      = null;
-            n.std      = null;
-            n.lbp      = 0;
+            n.std      = null;  //callback parsing the kind of statement. Used at the beginning of the staement
+
+            n.lbp      = 0;    // binding power = precedence level
             n.scope    = scope;
             return n;
         },
