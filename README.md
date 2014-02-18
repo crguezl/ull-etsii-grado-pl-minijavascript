@@ -14,4 +14,4 @@ and describes a parser for Simplified JavaScript in Simplified JavaScript.
 * [Deployment at GitHub pages](http://crguezl.github.io/ull-etsii-grado-pl-minijavascript/). 
   The app parses the input file  and displays its AST. 
 
-* the exercise is to understand and improve [tokens.js](https://github.com/crguezl/ull-etsii-grado-pl-minijavascript/blob/master/tokens.js). The `tokens` function  produces an array with the tokens for a given input string.
+* The exercise is to understand and improve [tokens.js](https://github.com/crguezl/ull-etsii-grado-pl-minijavascript/blob/master/tokens.js). The `tokens` function  produces an array with the tokens for a given input string.
