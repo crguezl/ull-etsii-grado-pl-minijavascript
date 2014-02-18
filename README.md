@@ -7,7 +7,7 @@ douglas@crockford.com
 
 ## Introduction
 
-* A full introduction is in the file [tdop.html](tdop.html) by Douglas Crockford.
+* A full introduction is in the file [tdop.html](http://crguezl.github.io/ull-etsii-grado-pl-minijavascript/tdop.html) by Douglas Crockford.
 It contains a description of Vaughn Pratt's Top Down Operator Precedence,
 and describes a parser for Simplified JavaScript in Simplified JavaScript.
 
