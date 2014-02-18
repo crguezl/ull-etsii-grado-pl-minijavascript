@@ -1,7 +1,9 @@
-#TDOP, Top Down Operator Precedence
+##TDOP, Top Down Operator Precedence Mini JavaScript Parser
 
-## forked from Douglas Crockford
-## douglas@crockford.com
+## Author
+
+Forked from Douglas Crockford TDOP project.
+douglas@crockford.com
 
 ## Introduction
 
