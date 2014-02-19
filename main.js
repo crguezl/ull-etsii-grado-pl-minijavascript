@@ -39,7 +39,7 @@ window.onload = function() {
   examples.onchange = function(ev) {
       var file = this.options[this.selectedIndex].value;
       $.ajax({
-            url : "ull-etsii-grado-pl-minijavascript/"+file,
+            url : "./"+file,
             dataType: "text",
             success : function (data) {
                 $("#INPUT").html(data);
