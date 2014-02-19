@@ -33,8 +33,8 @@ function main() {
     OUTPUT.innerHTML = string.replace(/&/g, '&amp;').replace(/[<]/g, '&lt;');
 };
 
-window.onload = function() {
-  PARSE.onclick = main;
+$(document).ready(function () {
+  $("#PARSE").click(main);
 
   $("#examples").change(function(ev) {
       var file = this.options[this.selectedIndex].value;
@@ -43,7 +43,7 @@ window.onload = function() {
           });
   });
 
-}
+});
 
 /*
 $(document).ready(function () {
