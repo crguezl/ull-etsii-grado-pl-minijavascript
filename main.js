@@ -35,4 +35,15 @@ function main() {
 
 window.onload = function() {
   PARSE.onclick = main;
+
+  examples.onchange = function(ev) {
+      var file = this.options[this.selectedIndex].value;
+      $.ajax({
+            url : file,
+            dataType: "text",
+            success : function (data) {
+                $("#INPUT").html(data);
+            }
+        });
+  };
 }
