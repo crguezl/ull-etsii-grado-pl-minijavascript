@@ -23,3 +23,27 @@ body { background-color: #99FFFF; }
     background-color: #66FFCC; 
     width: 80%;
 }
+
+a {
+  text-decoration: none; /* do not unfderline anchor links */
+}
+
+a:link { color:#CF5C3F; }
+a:visited { color:#CF5C3F; }
+a:hover{ 
+  background-color:#CF5C3F; 
+  color: #FFF;
+}
+a:active {color:#0000FF;}  /* selected link */
+
+
+
+#nav {
+    text-align: center;
+}
+#nav li {
+    list-style: none;
+    display: inline;
+    margin: 0 1em;
+}
+
