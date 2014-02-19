@@ -38,7 +38,7 @@ window.onload = function() {
 
   $("#examples").change(function(ev) {
       var file = this.options[this.selectedIndex].value;
-      $.get("/"+file, function (data) {
+      $.get("http://crguezl.github.io/ull-etsii-grado-pl-minijavascript/"+file, function (data) {
               $("#INPUT").val(data);
           });
   });
