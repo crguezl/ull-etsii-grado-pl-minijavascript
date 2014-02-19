@@ -36,28 +36,15 @@ function main() {
 window.onload = function() {
   PARSE.onclick = main;
 
-  $("#examples").change(function(ev) {
+  examples.onchange = function(ev) {
       var file = this.options[this.selectedIndex].value;
-      $.get("/"+file, function (data) {
-              $("#INPUT").val(data);
-          });
-  });
-
+      $.ajax({
+            url : file,
+            dataType: "text",
+            success : function (data) {
+                $("#INPUT").html(data);
+            }
+        });
+  };
 }
 
-/*
-$(document).ready(function () {
-    $("#process_btn").click(processGrammar);
-    $("#parse_btn").click(runParser);
-
-    $("#examples").change(function(ev) {
-        var file = this.options[this.selectedIndex].value;
-        $(document.body).addClass("loading");
-        $.get("/jison/examples/"+file, function (data) {
-                $("#grammar").val(data);
-                $(document.body).removeClass("loading");
-            });
-    });
-
-});
-*/
