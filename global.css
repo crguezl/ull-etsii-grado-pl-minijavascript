@@ -24,26 +24,39 @@ body { background-color: #99FFFF; }
     width: 80%;
 }
 
+
 a {
-  text-decoration: none; /* do not unfderline anchor links */
+  font-size: x-large;
+  text-decoration:none;
 }
 
-a:link { color:#CF5C3F; }
-a:visited { color:#CF5C3F; }
+a:link { color:#00FFFF; }
+a:visited { color:black; }
 a:hover{ 
-  background-color:#CF5C3F; 
+  background-color:black; 
   color: #FFF;
 }
 a:active {color:#0000FF;}  /* selected link */
 
 
 
-#nav {
+nav {
     text-align: center;
 }
-#nav li {
+
+nav li {
     list-style: none;
     display: inline;
     margin: 0 1em;
 }
 
+.mylink {
+  background-color: #66FFCC;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border: 5px solid #009900;
+  padding: 5px;
+}
+
+/* Supress borders after the button is pressed */
+#PARSE:focus {outline:0; }
