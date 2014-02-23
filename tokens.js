@@ -22,7 +22,6 @@ String.prototype.tokens = function () {
     var from;                   // The index of the start of the token.
     var i = 0;                  // The index of the current character.
     var n;                      // The number value.
-    var str;                    // The string value.
     var m;                      // Matching
     var result = [];            // An array to hold the results.
 
@@ -34,6 +33,9 @@ String.prototype.tokens = function () {
     var MULTIPLELINECOMMENT = /\/[*](.|\n)*?[*]\//g;
     var TWOCHAROPERATORS    = /([+][+=]|-[-=]|=[=<>]|[<>][=<>]|&&|[|][|])/g;
     var ONECHAROPERATORS    = /([-+*\/=()&|;:,<>{}[\]])/g; // May be some character is missing?
+    var tokens = [WHITES, ID, NUM, STRING, ONELINECOMMENT, 
+                  MULTIPLELINECOMMENT, TWOCHAROPERATORS, ONECHAROPERATORS ];
+
 
     // Make a token object.
     var make = function (type, value) {
@@ -45,57 +47,47 @@ String.prototype.tokens = function () {
         };
     };
 
+    var getTok = function() {
+      var str = m[0];
+      i += str.length; // Warning! side effect on i
+      return str;
+    };
+
     // Begin tokenization. If the source string is empty, return nothing.
     if (!this) return; 
 
     // Loop through this text
     while (i < this.length) {
-        WHITES.lastIndex =  ID.lastIndex = NUM.lastIndex = STRING.lastIndex =
-        ONELINECOMMENT.lastIndex = MULTIPLELINECOMMENT.lastIndex =
-        TWOCHAROPERATORS.lastIndex = ONECHAROPERATORS.lastIndex = i;
+        tokens.forEach( function(t) { t.lastIndex = i;}); // Only ECMAScript5
         from = i;
-        // Ignore whitespace.
-        if (m = WHITES.bexec(this)) {
-            str = m[0];
-            i += str.length;
+        // Ignore whitespace and comments
+        if (m = WHITES.bexec(this) || 
+           (m = ONELINECOMMENT.bexec(this))  || 
+           (m = MULTIPLELINECOMMENT.bexec(this))) { getTok(); }
         // name.
-        } else if (m = ID.bexec(this)) {
-            str = m[0];
-            i += str.length;
-            result.push(make('name', str));
-
+        else if (m = ID.bexec(this)) {
+            result.push(make('name', getTok()));
+        } 
         // number.
-        } else if (m = NUM.bexec(this)) {
-            str = m[0];
-            i += str.length;
+        else if (m = NUM.bexec(this)) {
+            n = +getTok();
 
-            n = +str;
             if (isFinite(n)) {
                 result.push(make('number', n));
             } else {
-                make('number', str).error("Bad number");
+                make('number', m[0]).error("Bad number");
             }
+        } 
         // string
-        } else if (m = STRING.bexec(this)) {
-            str = m[0];
-            i += str.length;
-            str = str.replace(/^["']/,'');
-            str = str.replace(/["']$/,'');
-            result.push(make('string', str));
-        // comment.
-        } else if ((m = ONELINECOMMENT.bexec(this))  || 
-                   (m = MULTIPLELINECOMMENT.bexec(this))) {
-            str = m[0];
-            i += str.length;
+        else if (m = STRING.bexec(this)) {
+            result.push(make('string', getTok().replace(/^["']|["']$/g,'')));
+        } 
         // two char operator
-        } else if (m = TWOCHAROPERATORS.bexec(this)) {
-            str = m[0];
-            i += str.length;
-            result.push(make('operator', str));
+        else if (m = TWOCHAROPERATORS.bexec(this)) {
+            result.push(make('operator', getTok()));
         // single-character operator
         } else if (m = ONECHAROPERATORS.bexec(this)){
-            result.push(make('operator', this.substr(i,1)));
-            i += 1;
+            result.push(make('operator', getTok()));
         } else {
           throw "Syntax error near '"+this.substr(i)+"'";
         }

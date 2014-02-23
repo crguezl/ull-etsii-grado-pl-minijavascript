@@ -18,7 +18,6 @@ Object.prototype.error = function (message, t) {
 function main() {
     var parse = make_parse();
 
-
     var source = INPUT.value;
     var string, tree;
     try {
@@ -35,15 +34,4 @@ function main() {
 
 window.onload = function() {
   PARSE.onclick = main;
-
-  examples.onchange = function(ev) {
-      var file = this.options[this.selectedIndex].value;
-      $.ajax({
-            url : "./expression.txt",
-            dataType: "text",
-            success : function (data) {
-                $("#INPUT").html(data);
-            }
-        });
-  };
 }
