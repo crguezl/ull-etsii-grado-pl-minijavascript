@@ -7,8 +7,9 @@
 /*global JSON, make_parse, parse, source, tree */
 
 // Transform a token object into an exception object and throw it.
-
-Object.prototype.error = function (message, t) {
+//  http://stackoverflow.com/questions/17857670/javascript-prototype-throw-the-error-as-object-object-object-has-no-method
+// Thanks Eliasib for pointing the error
+Object.constructor.prototype.error = function (message, t) {
     t = t || this;
     t.name = "SyntaxError";
     t.message = message;
