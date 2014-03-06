@@ -31,7 +31,7 @@ String.prototype.tokens = function () {
     var STRING              = /('(\\.|[^'])*'|"(\\.|[^"])*")/g;
     var ONELINECOMMENT      = /\/\/.*/g;
     var MULTIPLELINECOMMENT = /\/[*](.|\n)*?[*]\//g;
-    var TWOCHAROPERATORS    = /([+][+=]|-[-=]|=[=<>]|[<>][=<>]|&&|[|][|])/g;
+    var TWOCHAROPERATORS    = /(===|!==|[+][+=]|-[-=]|=[=<>]|[<>][=<>]|&&|[|][|])/g;
     var ONECHAROPERATORS    = /([-+*\/=()&|;:,<>{}[\]])/g; // May be some character is missing?
     var tokens = [WHITES, ID, NUM, STRING, ONELINECOMMENT, 
                   MULTIPLELINECOMMENT, TWOCHAROPERATORS, ONECHAROPERATORS ];
