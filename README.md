@@ -5,6 +5,9 @@
 Forked from Douglas Crockford TDOP project.
 douglas@crockford.com
 
+The lexycal analyzer is modified to use regular expressions.
+Casiano Rodriguez Leon crguezl@ull.edu.es
+
 ## Introduction
 
 * A full introduction is in the file [tdop.html](http://crguezl.github.io/ull-etsii-grado-pl-minijavascript/tdop.html) by Douglas Crockford.
