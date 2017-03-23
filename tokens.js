@@ -27,7 +27,7 @@ String.prototype.tokens = function () {
 
     var WHITES              = /\s+/g;
     var ID                  = /[a-zA-Z_]\w*/g;
-    var NUM                 = /\b\d+(\.\d*)?([eE][+-]?\d+)?\b/g;
+    var NUM                 = /\d+(\.\d*)?([eE][+-]?\d+)?/g;
     var STRING              = /('(\\.|[^'])*'|"(\\.|[^"])*")/g;
     var ONELINECOMMENT      = /\/\/.*/g;
     var MULTIPLELINECOMMENT = /\/[*](.|\n)*?[*]\//g;
