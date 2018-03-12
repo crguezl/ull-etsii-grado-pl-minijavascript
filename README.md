@@ -5,7 +5,7 @@
 Forked from Douglas Crockford TDOP project.
 douglas@crockford.com
 
-The lexycal analyzer is modified to use regular expressions.
+The lexical analyzer is modified to use regular expressions.
 Casiano Rodriguez Leon crguezl@ull.edu.es
 
 ## Introduction
