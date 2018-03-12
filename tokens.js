@@ -11,12 +11,14 @@
 
 // Comments are ignored.
 
+/*
 RegExp.prototype.bexec = function(str) {
   var i = this.lastIndex;
   var m = this.exec(str);
   if (m && m.index == i) return m;
   return null;
 }
+*/
 
 String.prototype.tokens = function () {
     var from;                   // The index of the start of the token.
@@ -25,16 +27,16 @@ String.prototype.tokens = function () {
     var m;                      // Matching
     var result = [];            // An array to hold the results.
 
-    var WHITES              = /\s+/g;
-    var ID                  = /[a-zA-Z_]\w*/g;
-    var NUM                 = /\d+(\.\d*)?([eE][+-]?\d+)?/g;
-    var STRING              = /('(\\.|[^'])*'|"(\\.|[^"])*")/g;
-    var ONELINECOMMENT      = /\/\/.*/g;
-    var MULTIPLELINECOMMENT = /\/[*](.|\n)*?[*]\//g;
-    //var TWOCHAROPERATORS    = /(===|!==|[+][+=]|-[-=]|=[=<>]|[<>][=<>]|&&|[|][|])/g;
+    var WHITES              = /\s+/y;
+    var ID                  = /[a-zA-Z_]\w*/y;
+    var NUM                 = /\d+(\.\d*)?([eE][+-]?\d+)?/y;
+    var STRING              = /('(\\.|[^'])*'|"(\\.|[^"])*")/y;
+    var ONELINECOMMENT      = /\/\/.*/y;
+    var MULTIPLELINECOMMENT = /\/[*](.|\n)*?[*]\//y;
+    //var TWOCHAROPERATORS    = /(===|!==|[+][+=]|-[-=]|=[=<>]|[<>][=<>]|&&|[|][|])/y;
     // Juan Hernandez
-    var TWOCHAROPERATORS    = /(===|!==|!=|[+][+]|--|==|[<>=+-/*%]=]|&&|[|][|])/g;
-    var ONECHAROPERATORS    = /([-+*\/=()&|;:,<>{}[\]%?])/g; // May be some character is missing?
+    var TWOCHAROPERATORS    = /(===|!==|!=|[+][+]|--|==|[<>=+-/*%]=]|&&|[|][|])/y;
+    var ONECHAROPERATORS    = /([-+*\/=()&|;:,<>{}[\]%?])/y; // May be some character is missing?
     var tokens = [WHITES, ID, NUM, STRING, ONELINECOMMENT, 
                   MULTIPLELINECOMMENT, TWOCHAROPERATORS, ONECHAROPERATORS ];
 
@@ -63,15 +65,15 @@ String.prototype.tokens = function () {
         tokens.forEach( function(t) { t.lastIndex = i;}); // Only ECMAScript5
         from = i;
         // Ignore whitespace and comments
-        if (m = WHITES.bexec(this) || 
-           (m = ONELINECOMMENT.bexec(this))  || 
-           (m = MULTIPLELINECOMMENT.bexec(this))) { getTok(); }
+        if (m = WHITES.exec(this) || 
+           (m = ONELINECOMMENT.exec(this))  || 
+           (m = MULTIPLELINECOMMENT.exec(this))) { getTok(); }
         // name.
-        else if (m = ID.bexec(this)) {
+        else if (m = ID.exec(this)) {
             result.push(make('name', getTok()));
         } 
         // number.
-        else if (m = NUM.bexec(this)) {
+        else if (m = NUM.exec(this)) {
             n = +getTok();
 
             if (isFinite(n)) {
@@ -81,14 +83,14 @@ String.prototype.tokens = function () {
             }
         } 
         // string
-        else if (m = STRING.bexec(this)) {
-            result.push(make('string', getTok().replace(/^["']|["']$/g,'')));
+        else if (m = STRING.exec(this)) {
+            result.push(make('string', getTok().replace(/^["']|["']$/y,'')));
         } 
         // two char operator
-        else if (m = TWOCHAROPERATORS.bexec(this)) {
+        else if (m = TWOCHAROPERATORS.exec(this)) {
             result.push(make('operator', getTok()));
         // single-character operator
-        } else if (m = ONECHAROPERATORS.bexec(this)){
+        } else if (m = ONECHAROPERATORS.exec(this)){
             result.push(make('operator', getTok()));
         } else {
           throw "Syntax error near '"+this.substr(i)+"'";
