@@ -33,8 +33,8 @@ String.prototype.tokens = function () {
     var MULTIPLELINECOMMENT = /\/[*](.|\n)*?[*]\//g;
     //var TWOCHAROPERATORS    = /(===|!==|[+][+=]|-[-=]|=[=<>]|[<>][=<>]|&&|[|][|])/g;
     // Juan Hernandez
-    var TWOCHAROPERATORS    = /(===|!==|[+][+]|--|==|[<>=+-/*%]=]|&&|[|][|])/g;
-    var ONECHAROPERATORS    = /([-+*\/=()&|;:,<>{}[\]])/g; // May be some character is missing?
+    var TWOCHAROPERATORS    = /(===|!==|!=|[+][+]|--|==|[<>=+-/*%]=]|&&|[|][|])/g;
+    var ONECHAROPERATORS    = /([-+*\/=()&|;:,<>{}[\]%?])/g; // May be some character is missing?
     var tokens = [WHITES, ID, NUM, STRING, ONELINECOMMENT, 
                   MULTIPLELINECOMMENT, TWOCHAROPERATORS, ONECHAROPERATORS ];
 
