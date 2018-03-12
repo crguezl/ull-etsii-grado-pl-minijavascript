@@ -11,14 +11,6 @@
 
 // Comments are ignored.
 
-/*
-RegExp.prototype.bexec = function(str) {
-  var i = this.lastIndex;
-  var m = this.exec(str);
-  if (m && m.index == i) return m;
-  return null;
-}
-*/
 
 String.prototype.tokens = function () {
     var from;                   // The index of the start of the token.
