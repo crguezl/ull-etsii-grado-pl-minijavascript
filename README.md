@@ -9,7 +9,7 @@
 3. Para la fase de autenticación, trabajando con el repo [ULL-ESIT-PL-1617/evaluar-manejo-de-cookies-y-sessions-en-expressjs-alu0100825510](https://github.com/ULL-ESIT-PL-1617/evaluar-manejo-de-cookies-y-sessions-en-expressjs-alu0100825510) con el middleware de autenticación
   1. Mejore este paquete para su publicación en npm registry
   2. Publíquelo en su ámbito `@aluXXX/auth`
-  3. Úse en su analizador léxico el módulo publicado
+  3. Utilice en su analizador léxico el módulo publicado `@aluXX/auth` para la fase de autenticación
 4. Despliegue la aplicación del analizador léxico en Heroku 
 
 ### Recursos
