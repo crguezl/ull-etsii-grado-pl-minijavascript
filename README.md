@@ -11,7 +11,7 @@
     2. Publíquelo en su ámbito `@aluXXX/auth`
     3. Utilice en su analizador léxico el módulo publicado `@aluXX/auth` para la fase de autenticación
     4. Si tiene dudas, repase [ULL-ESIT-PL-1617/evaluar-manejo-de-cookies-y-sessions-en-expressjs-alu0100825510](https://github.com/ULL-ESIT-PL-1617/evaluar-manejo-de-cookies-y-sessions-en-expressjs-alu0100825510)
-4. Despliegue la aplicación del analizador léxico en Heroku 
+4. Despliegue la aplicación del analizador léxico en [Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) 
 
 ### Recursos
 
@@ -27,3 +27,4 @@
 * [Descripción de la Práctica: Evaluar Manejo de Rutas en ExpressJS](practicalearningcookies.md)
 * [Apuntes sobre Cookies y Sessions](https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/apuntes/cookies/)
 * [Heroku en los apuntes](https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/recursos/heroku.html)
+* [Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) 
