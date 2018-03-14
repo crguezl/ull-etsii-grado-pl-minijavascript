@@ -1,20 +1,27 @@
-##TDOP, Top Down Operator Precedence Mini JavaScript Parser
+## TDOP, Top Down Operator Precedence Mini JavaScript Parser. Retos
 
-## Author
+### Hitos
 
-Forked from Douglas Crockford TDOP project.
-douglas@crockford.com
+1. Extienda su analizador léxico para que acepte la entrada `var α = 4`
+2. Extienda su analizador léxico para que acepte la entrada `var α = ६+६`
+  * ६ es Devanagari 6
+  * Vea [unicode.js](https://github.com/ULL-ESIT-GRADOII-PL/xregexp-example/blob/gh-pages/unicode.js)
+3. Para la fase de autenticación, trabajando con el repo [ULL-ESIT-PL-1617/evaluar-manejo-de-cookies-y-sessions-en-expressjs-alu0100825510](https://github.com/ULL-ESIT-PL-1617/evaluar-manejo-de-cookies-y-sessions-en-expressjs-alu0100825510) con el middleware de autenticación
+  1. Mejore este paquete para su publicación en npm registry
+  2. Publíquelo en su ámbito `@aluXXX/auth`
+  3. Úse en su analizador léxico el módulo publicado
+4. Despliegue la aplicación del analizador léxico en Heroku 
 
-The lexycal analyzer is modified to use regular expressions.
-Casiano Rodriguez Leon crguezl@ull.edu.es
+### Recursos
 
-## Introduction
-
-* A full introduction is in the file [tdop.html](http://crguezl.github.io/ull-etsii-grado-pl-minijavascript/tdop.html) by Douglas Crockford.
-It contains a description of Vaughn Pratt's Top Down Operator Precedence,
-and describes a parser for Simplified JavaScript in Simplified JavaScript.
-
-* [Deployment at GitHub pages](http://crguezl.github.io/ull-etsii-grado-pl-minijavascript/). 
-  The app parses the input file  and displays its AST. 
-
-* The exercise is to understand and improve [tokens.js](https://github.com/crguezl/ull-etsii-grado-pl-minijavascript/blob/master/tokens.js). The `tokens` function  produces an array with the tokens for a given input string.
+* Repo [ULL-ESIT-PL-1617/evaluar-manejo-de-cookies-y-sessions-en-expressjs-alu0100825510](https://github.com/ULL-ESIT-PL-1617/evaluar-manejo-de-cookies-y-sessions-en-expressjs-alu0100825510) con el middleware de autenticación
+* Vea [unicode.js](https://github.com/ULL-ESIT-GRADOII-PL/xregexp-example/blob/gh-pages/unicode.js)
+* [Repositorio con ejemplos de uso de cookies en express](https://github.com/ULL-ESIT-DSI-1617/express-cookies-examples)
+* El ejemplo [staticauth.js](https://github.com/ULL-ESIT-DSI-1617/express-cookies-examples/blob/master/staticauth.js) es similar a lo que se pide
+  - En este ejemplo el [directorio gbookexample](https://github.com/ULL-ESIT-DSI-1617/express-cookies-examples/tree/master/gbookexample) contiene los markdown fuente para el libro
+  - El libro es compilado con: `gitbook build gbookexample/ public/`
+  - De manera que los HTML se montan en la ruta `content` y se sirven desde el directorio `public`
+* Tiene un ejemplo de formulario en la vista [`login.ejs`](https://github.com/ULL-ESIT-DSI-1617/express-cookies-examples/blob/master/views/login.ejs) que es usada por el ejemplo [`auth-example.js`](https://github.com/ULL-ESIT-DSI-1617/express-cookies-examples/blob/master/auth-example.js#L99-L101)
+* [Descripción de la Práctica: Evaluar Manejo de Rutas en ExpressJS](practicalearningcookies.md)
+* [Apuntes sobre Cookies y Sessions](https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/apuntes/cookies/)
+* [Heroku en los apuntes](https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/recursos/heroku.html)
