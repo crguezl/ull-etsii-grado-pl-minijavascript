@@ -4,8 +4,8 @@
 
 1. Extienda su analizador léxico para que acepte la entrada `var α = 4`
 2. Extienda su analizador léxico para que acepte la entrada `var α = ६+६`
-  * ६ es Devanagari 6
-  * Vea [unicode.js](https://github.com/ULL-ESIT-GRADOII-PL/xregexp-example/blob/gh-pages/unicode.js)
+    * ६ es Devanagari 6
+    * Vea [unicode.js](https://github.com/ULL-ESIT-GRADOII-PL/xregexp-example/blob/gh-pages/unicode.js)
 3. Para la fase de autenticación, trabajando con el repo [ULL-ESIT-PL-1617/evaluar-manejo-de-cookies-y-sessions-en-expressjs-alu0100825510](https://github.com/ULL-ESIT-PL-1617/evaluar-manejo-de-cookies-y-sessions-en-expressjs-alu0100825510) con el middleware de autenticación
   1. Mejore este paquete para su publicación en npm registry
   2. Publíquelo en su ámbito `@aluXXX/auth`
