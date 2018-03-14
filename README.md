@@ -4,7 +4,7 @@
 
 1. Extienda su analizador léxico para que acepte la entrada `var α = 4`
 2. Extienda su analizador léxico para que acepte la entrada `var α = ६+६`
-    * ६ es [Devanagari](https://es.wikipedia.org/wiki/Devanagari) 6 (El devanāgarī es una escritura abugida utilizada para escribir el idioma nepalí y varios idiomas de India)
+    * ६ es [Devanagari](https://es.wikipedia.org/wiki/Devanagari) 6 (El devanāgarī es una escritura utilizada en el idioma nepalí y varios idiomas de India)
     * Vea [unicode.js](https://github.com/ULL-ESIT-GRADOII-PL/xregexp-example/blob/gh-pages/unicode.js)
 3. Para la fase de autenticación, desacople la autenticación en un repo separado y haga que sea un módulo independiente  con el middleware de autenticación
     1. Mejore este paquete para su publicación en npm registry
