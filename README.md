@@ -6,6 +6,7 @@
 2. Extienda su analizador léxico para que acepte la entrada `var α = ६+६`
     * ६ es [Devanagari](https://es.wikipedia.org/wiki/Devanagari) 6. El devanāgarī es una escritura utilizada en el idioma nepalí y varios idiomas de India
     * Vea [unicode.js](https://github.com/ULL-ESIT-GRADOII-PL/xregexp-example/blob/gh-pages/unicode.js) 
+    * Es difícil convertir números en diferentes codificaciones. A partir del blog [Unicode Numbers In Javascript](http://roysharon.com/blog/44) Posted on December 1, 2010 by Roy Sharon he creado el módulo [@ull-esit-pl/uninums](https://www.npmjs.com/package/@ull-esit-pl/uninums). Utilícelo para el parseo de los números
 3. Para la fase de autenticación, desacople la autenticación en un repo separado y haga que sea un módulo independiente  con el middleware de autenticación
     1. Mejore este paquete para su publicación en npm registry
     2. Publíquelo en su ámbito `@aluXXX/auth`
