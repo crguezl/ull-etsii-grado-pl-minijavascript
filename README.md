@@ -1,4 +1,4 @@
-##TDOP, Top Down Operator Precedence Mini JavaScript Parser
+# TDOP, Top Down Operator Precedence Mini JavaScript Parser
 
 ## Author
 
