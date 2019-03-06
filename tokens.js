@@ -241,6 +241,7 @@ String.prototype.tokens = function (prefix, suffix) {
             }
 
 // combining
+// The call is: tokens = source.tokens('=<>!+-*&|/%^', '=<>&|');
 
         } else if (prefix.indexOf(c) >= 0) {
             str = c;
