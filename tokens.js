@@ -80,7 +80,7 @@ String.prototype.tokens = function () {
         else if (m = OPERATORS.exec(this)) {
             result.push(make('operator', getTok()));
         } else {
-          throw "Syntax error near '"+this.substr(i)+"'";
+          throw "Syntax error near '"+this.substr(i)+"'. Unrecognized token!";
         }
     }
     return result;
