@@ -76,10 +76,9 @@ String.prototype.tokens = function () {
         else if (m = STRING.exec(this)) {
             result.push(make('string', getTok().replace(/^["']|["']$/g,'')));
         } 
-        // two char operator
+        // operator
         else if (m = OPERATORS.exec(this)) {
             result.push(make('operator', getTok()));
-        // single-character operator
         } else {
           throw "Syntax error near '"+this.substr(i)+"'";
         }
