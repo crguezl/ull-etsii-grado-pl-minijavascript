@@ -26,7 +26,7 @@ String.prototype.tokens = function () {
     var ONELINECOMMENT      = /\/\/.*/y;
     var MULTIPLELINECOMMENT = /\/[*](.|\n)*?[*]\//y;
     // var a = (2 == 3); Not accepted. Bug in the parser not in the tokenizer!
-    var OPERATORS           = />>>=|>>>|>>=|<<=|[*][*]=|===|!==|==|<=|>=|!=|&&|[|][|]|[+][+]|--|[+]=|-=|[*]=|[/]=|%=|&=|\^=|[|]=|<<|>>|<|>|=|[+]|-|[*]|[/]|%|\^|&|[|]|~|.|:|;|,|[(]|[)]|\[|\]|/y;
+    var OPERATORS           = />>>=|>>>|>>=|<<=|[*][*]=|===|!==|==|<=|>=|!=|&&|[|][|]|[+][+]|--|[+]=|-=|[*]=|[/]=|%=|&=|\^=|[|]=|<<|>>|<|>|=|[+]|-|[*]|[/]|%|\^|&|[|]|~|\.|:|;|,|[(]|[)]|\[|\]|/y;
     var tokens = [WHITES, ID, NUM, STRING, ONELINECOMMENT, 
                   MULTIPLELINECOMMENT, OPERATORS ];
 
