@@ -25,13 +25,11 @@ String.prototype.tokens = function () {
     var STRING              = /('(\\.|[^'])*'|"(\\.|[^"])*")/y;
     var ONELINECOMMENT      = /\/\/.*/y;
     var MULTIPLELINECOMMENT = /\/[*](.|\n)*?[*]\//y;
-    //var TWOCHAROPERATORS    = /(===|!==|[+][+=]|-[-=]|=[=<>]|[<>][=<>]|&&|[|][|])/y;
-    // Juan Hernandez
-    var TWOCHAROPERATORS    = /(===|!==|!=|==|[+][+]|--|<=|>=|[+]=|-=|\/=|[*]=|%=|&&|[|][|])/y;
-    var ONECHAROPERATORS    = /([-+*\/=()&|;:,<>{}[\]%?])/y; // May be some character is missing?
-    var tokens = [WHITES, ID, NUM, STRING, ONELINECOMMENT, 
-                  MULTIPLELINECOMMENT, TWOCHAROPERATORS, ONECHAROPERATORS ];
-
+    var OPERATORS =
+      />>>=|>>>|>>=|<<=|[*][*]=|===|!==|==|<=|>=|!=|&&|[|][|]|[+][+]|--|[+]=|-=|[*]=|[/]=|%=|&=|\^=|[|]=|<<|>>|<|>|=|[+]|-|[*]|[/]|%|\^|&|[|]|~|.|:|;|,|[(]|[)]|\[|\]|/y;
+    var tokens = [WHITES, ID, NUM, STRING, ONELINECOMMENT,
+      MULTIPLELINECOMMENT, OPERATORS
+    ];
 
     // Make a token object.
     var make = function (type, value) {
@@ -78,13 +76,11 @@ String.prototype.tokens = function () {
         else if (m = STRING.exec(this)) {
             result.push(make('string', getTok().replace(/^["']|["']$/g,'')));
         } 
-        // two char operator
-        else if (m = TWOCHAROPERATORS.exec(this)) {
-            result.push(make('operator', getTok()));
-        // single-character operator
-        } else if (m = ONECHAROPERATORS.exec(this)){
-            result.push(make('operator', getTok()));
-        } else {
+        // operator
+        else if (m = OPERATORS.exec(this)) {
+          result.push(make('operator', getTok()));
+        } 
+        else {
           throw "Syntax error near '"+this.substr(i)+"'";
         }
     }
