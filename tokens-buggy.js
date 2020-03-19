@@ -25,12 +25,10 @@ String.prototype.tokens = function () {
     var STRING              = /('(\\.|[^'])*'|"(\\.|[^"])*")/y;
     var ONELINECOMMENT      = /\/\/.*/y;
     var MULTIPLELINECOMMENT = /\/[*](.|\n)*?[*]\//y;
-    //var TWOCHAROPERATORS    = /(===|!==|[+][+=]|-[-=]|=[=<>]|[<>][=<>]|&&|[|][|])/y;
-    // Juan Hernandez
-    var TWOCHAROPERATORS    = /(===|!==|!=|==|[+][+]|--|<=|>=|[+]=|-=|\/=|[*]=|%=|&&|[|][|])/y;
-    var ONECHAROPERATORS    = /([-+*\/=()&|;:,<>{}[\]%?])/y; // May be some character is missing?
+    // var a = (2 == 3); Not accepted. Bug in the parser not in the tokenizer!
+    var OPERATORS           = />>>=|>>>|>>=|<<=|[*][*]=|===|!==|==|<=|>=|!=|&&|[|][|]|[+][+]|--|[+]=|-=|[*]=|[/]=|%=|&=|\^=|[|]=|<<|>>|<|>|=|[+]|-|[*]|[/]|%|\^|&|[|]|~|\.|:|;|,|[(]|[)]|\[|\]|/y;
     var tokens = [WHITES, ID, NUM, STRING, ONELINECOMMENT, 
-                  MULTIPLELINECOMMENT, TWOCHAROPERATORS, ONECHAROPERATORS ];
+                  MULTIPLELINECOMMENT, OPERATORS ];
 
 
     // Make a token object.
@@ -78,14 +76,11 @@ String.prototype.tokens = function () {
         else if (m = STRING.exec(this)) {
             result.push(make('string', getTok().replace(/^["']|["']$/g,'')));
         } 
-        // two char operator
-        else if (m = TWOCHAROPERATORS.exec(this)) {
-            result.push(make('operator', getTok()));
-        // single-character operator
-        } else if (m = ONECHAROPERATORS.exec(this)){
+        // operator
+        else if (m = OPERATORS.exec(this)) {
             result.push(make('operator', getTok()));
         } else {
-          throw "Syntax error near '"+this.substr(i)+"'";
+          throw "Syntax error near '"+this.substr(i)+"'. Unrecognized token!";
         }
     }
     return result;
